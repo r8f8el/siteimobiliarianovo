@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 Seusite - Plataforma SaaS para Corretores de Imóveis
 
-## Getting Started
+Uma plataforma completa para corretores criarem sites modernos com IA integrada para geração de conteúdo.
 
-First, run the development server:
+## ✨ Funcionalidades Implementadas
 
+### 🎨 **Interface e Design**
+- ✅ **Sistema de Dark Mode** com padrão claro
+- ✅ **Design System** completo com variáveis CSS
+- ✅ **Animações suaves** com Framer Motion
+- ✅ **Layout responsivo** para mobile e desktop
+- ✅ **Componentes reutilizáveis** e modulares
+
+### 🏠 **Páginas Principais**
+- ✅ **Landing Page** com hero, features, templates e pricing
+- ✅ **Página de Imóveis** com galeria interativa
+- ✅ **Dashboard do Corretor** com estatísticas e gerenciamento
+- ✅ **Painel Administrativo** para gestão da plataforma
+- ✅ **Páginas de Templates, Pricing, Blog, Sobre e Contato**
+
+### 🔧 **Funcionalidades Avançadas**
+- ✅ **Galeria de Imagens Interativa** com navegação
+- ✅ **Sistema de Compartilhamento** nativo e redes sociais
+- ✅ **Sistema de Favoritos** com localStorage
+- ✅ **Calculadora de Financiamento** interativa
+- ✅ **Mapa Integrado** com Google Maps
+- ✅ **Formulários de Contato** funcionais
+- ✅ **Autenticação Mock** com credenciais de teste
+
+### 🤖 **IA e Automação**
+- ✅ **Preview de IA** para geração de conteúdo
+- ✅ **Botões "Gerar com IA"** em toda interface
+- ✅ **Sistema preparado** para integração com OpenAI
+
+## 🚀 Tecnologias Utilizadas
+
+- **Frontend**: Next.js 15, React, TypeScript
+- **Styling**: Tailwind CSS, CSS Variables
+- **Animações**: Framer Motion
+- **Ícones**: Lucide React
+- **Imagens**: Next.js Image Optimization
+- **Estado**: React Context API
+- **Persistência**: localStorage
+
+## 📱 Credenciais de Teste
+
+### 👨‍💼 **Administrador**
+- **Email**: `admin@seusite.com`
+- **Senha**: `admin123`
+- **Acesso**: `/admin`
+
+### 🏠 **Corretor**
+- **Email**: `corretor@exemplo.com`
+- **Senha**: `corretor123`
+- **Acesso**: `/dashboard`
+
+## 🛠️ Como Executar
+
+### Pré-requisitos
+- Node.js 18+ 
+- npm ou yarn
+
+### Instalação
 ```bash
+# Clone o repositório
+git clone <seu-repositorio>
+cd frontend
+
+# Instale as dependências
+npm install
+
+# Execute o servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Acesse
+- **Local**: http://localhost:3000
+- **Página Principal**: http://localhost:3000
+- **Login**: http://localhost:3000/login
+- **Dashboard**: http://localhost:3000/dashboard
+- **Admin**: http://localhost:3000/admin
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+frontend/
+├── src/
+│   ├── app/                 # Páginas Next.js (App Router)
+│   │   ├── admin/          # Painel administrativo
+│   │   ├── dashboard/      # Dashboard do corretor
+│   │   ├── property/       # Páginas de imóveis
+│   │   └── ...
+│   ├── components/         # Componentes reutilizáveis
+│   │   ├── ShareButton.tsx
+│   │   ├── FavoriteButton.tsx
+│   │   └── ThemeToggle.tsx
+│   └── contexts/           # Contextos React
+│       └── ThemeContext.tsx
+├── public/
+│   └── images/            # Imagens e assets
+└── ...
+```
 
-## Learn More
+## 🎯 Funcionalidades em Destaque
 
-To learn more about Next.js, take a look at the following resources:
+### 🌓 **Sistema de Tema**
+- Toggle entre tema claro e escuro
+- Persistência da preferência
+- Transições suaves
+- Variáveis CSS dinâmicas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 📤 **Compartilhamento**
+- Web Share API nativa
+- Redes sociais (Facebook, Twitter, WhatsApp)
+- Copiar link
+- E-mail direto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### ❤️ **Favoritos**
+- Salvar imóveis favoritos
+- Persistência no localStorage
+- Animações de feedback
+- Notificações visuais
 
-## Deploy on Vercel
+### 🧮 **Calculadora de Financiamento**
+- Sliders interativos
+- Cálculo automático de parcelas
+- Taxas atualizadas
+- Interface intuitiva
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔮 Próximas Implementações
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Sistema de blog robusto com categorias
+- [ ] Filtros avançados na página de anúncios
+- [ ] Preview da versão mobile
+- [ ] Integração real com OpenAI
+- [ ] Sistema de pagamentos
+- [ ] Backend com NestJS
+- [ ] Banco de dados PostgreSQL
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
+
+---
+
+**Desenvolvido com ❤️ para revolucionar o mercado imobiliário**
