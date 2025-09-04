@@ -24,20 +24,27 @@ const recentProperties = [
 ];
 
 export default function DashboardPage() {
+  const handleGenerateWithAI = () => {
+    alert('Funcionalidade de IA será implementada em breve! Por enquanto, você pode usar as outras funcionalidades do dashboard.');
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <p className="text-gray-600">Bem-vindo de volta, João! Aqui está um resumo da sua atividade.</p>
+          <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
+          <p className="text-muted-foreground">Bem-vindo de volta, João! Aqui está um resumo da sua atividade.</p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-pink-500 text-white rounded-lg hover:from-blue-600 hover:to-pink-600 transition-all duration-200">
+          <button 
+            onClick={handleGenerateWithAI}
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-pink-500 text-white rounded-lg hover:from-blue-600 hover:to-pink-600 transition-all duration-200"
+          >
             <Sparkles className="h-4 w-4" />
             Gerar com IA
           </button>
-          <Link href="/dashboard/properties/new" className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+          <Link href="/dashboard/properties" className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:bg-accent transition-colors">
             <Plus className="h-4 w-4" />
             Novo Imóvel
           </Link>
@@ -52,12 +59,12 @@ export default function DashboardPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="bg-white rounded-xl border border-gray-200 p-6"
+            className="bg-card rounded-xl border border-border p-6"
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
+                <p className="text-sm font-medium text-muted-foreground">{stat.name}</p>
+                <p className="text-2xl font-bold text-foreground mt-1">{stat.value}</p>
                 <p className={`text-sm mt-1 ${
                   stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
                 }`}>
@@ -78,10 +85,10 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white rounded-xl border border-gray-200 p-6"
+          className="bg-card rounded-xl border border-border p-6"
         >
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Leads Recentes</h2>
+            <h2 className="text-lg font-semibold text-foreground">Leads Recentes</h2>
             <Link href="/dashboard/leads" className="text-sm text-blue-600 hover:text-blue-700">
               Ver todos
             </Link>
@@ -90,9 +97,9 @@ export default function DashboardPage() {
             {recentLeads.map((lead) => (
               <div key={lead.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <p className="font-medium text-gray-900">{lead.name}</p>
-                  <p className="text-sm text-gray-600">{lead.property}</p>
-                  <p className="text-xs text-gray-500">{lead.date}</p>
+                  <p className="font-medium text-foreground">{lead.name}</p>
+                  <p className="text-sm text-muted-foreground">{lead.property}</p>
+                  <p className="text-xs text-muted-foreground">{lead.date}</p>
                 </div>
                 <span className={`px-2 py-1 text-xs rounded-full ${
                   lead.status === 'Novo' ? 'bg-blue-100 text-blue-800' :
@@ -111,10 +118,10 @@ export default function DashboardPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white rounded-xl border border-gray-200 p-6"
+          className="bg-card rounded-xl border border-border p-6"
         >
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Imóveis Recentes</h2>
+            <h2 className="text-lg font-semibold text-foreground">Imóveis Recentes</h2>
             <Link href="/dashboard/properties" className="text-sm text-blue-600 hover:text-blue-700">
               Ver todos
             </Link>
@@ -123,9 +130,9 @@ export default function DashboardPage() {
             {recentProperties.map((property) => (
               <div key={property.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <p className="font-medium text-gray-900">{property.title}</p>
-                  <p className="text-sm text-gray-600">R$ {property.price.toLocaleString('pt-BR')}</p>
-                  <p className="text-xs text-gray-500">{property.views} visualizações</p>
+                  <p className="font-medium text-foreground">{property.title}</p>
+                  <p className="text-sm text-muted-foreground">R$ {property.price.toLocaleString('pt-BR')}</p>
+                  <p className="text-xs text-muted-foreground">{property.views} visualizações</p>
                 </div>
                 <span className={`px-2 py-1 text-xs rounded-full ${
                   property.status === 'Ativo' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
@@ -143,11 +150,11 @@ export default function DashboardPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="bg-white rounded-xl border border-gray-200 p-6"
+        className="bg-card rounded-xl border border-border p-6"
       >
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Ações Rápidas</h2>
+        <h2 className="text-lg font-semibold text-foreground mb-4">Ações Rápidas</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Link href="/dashboard/properties/new" className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <Link href="/dashboard/properties" className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
             <Building2 className="h-6 w-6 text-blue-600" />
             <div>
               <p className="font-medium text-blue-900">Adicionar Imóvel</p>
@@ -161,7 +168,7 @@ export default function DashboardPage() {
               <p className="text-sm text-orange-700">Promova seus imóveis</p>
             </div>
           </Link>
-          <Link href="/dashboard/blog/new" className="flex items-center gap-3 p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <Link href="/dashboard/blog" className="flex items-center gap-3 p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
             <Sparkles className="h-6 w-6 text-green-600" />
             <div>
               <p className="font-medium text-green-900">Criar Post</p>

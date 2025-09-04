@@ -1,57 +1,109 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark';
+type Theme = 'light' | 'dark' | 'system';
 
 interface ThemeContextType {
   theme: Theme;
+  actualTheme: 'light' | 'dark'; // Tema real aplicado (considerando system)
+  setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setThemeState] = useState<Theme>('dark');
+  const [actualTheme, setActualTheme] = useState<'light' | 'dark'>('dark');
   const [mounted, setMounted] = useState(false);
+
+  // Função para detectar preferência do sistema
+  const getSystemTheme = (): 'light' | 'dark' => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return 'light';
+  };
+
+  // Função para aplicar tema
+  const applyTheme = (newTheme: 'light' | 'dark') => {
+    if (typeof document !== 'undefined') {
+      if (newTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      setActualTheme(newTheme);
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
-    // Verificar se há preferência salva no localStorage
+    // Carregar tema salvo do localStorage
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
+    if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+      setThemeState(savedTheme);
     } else {
-      // Se não há preferência salva, usar o padrão claro
-      setTheme('light');
+      // Padrão: modo escuro
+      setThemeState('dark');
+      localStorage.setItem('theme', 'dark');
     }
   }, []);
 
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem('theme', theme);
-      // Aplicar a classe ao documento
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
+      let newActualTheme: 'light' | 'dark';
+
+      if (theme === 'system') {
+        newActualTheme = getSystemTheme();
       } else {
-        document.documentElement.classList.remove('dark');
+        newActualTheme = theme;
       }
+
+      applyTheme(newActualTheme);
+      
+      // Salvar tema no localStorage
+      localStorage.setItem('theme', theme);
     }
   }, [theme, mounted]);
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  // Escutar mudanças na preferência do sistema
+  useEffect(() => {
+    if (mounted && theme === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      const handleChange = () => {
+        const systemTheme = getSystemTheme();
+        applyTheme(systemTheme);
+      };
+
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+  }, [theme, mounted]);
+
+  const setTheme = (newTheme: Theme) => {
+    setThemeState(newTheme);
   };
 
-  // Evitar hidratação mismatch
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else if (theme === 'dark') {
+      setTheme('system');
+    } else {
+      setTheme('light');
+    }
+  };
+
+  // Evitar hidratação mismatch mantendo DOM estável
   if (!mounted) {
-    return <div className="light">{children}</div>;
+    return <>{children}</>;
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={theme}>
-        {children}
-      </div>
+    <ThemeContext.Provider value={{ theme, actualTheme, setTheme, toggleTheme }}>
+      {children}
     </ThemeContext.Provider>
   );
 }

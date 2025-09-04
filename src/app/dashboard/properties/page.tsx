@@ -68,15 +68,15 @@ export default function PropertiesPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Imóveis</h1>
-          <p className="text-gray-600">Gerencie seus imóveis e acompanhe o desempenho</p>
+          <h1 className="text-2xl font-bold text-foreground">Imóveis</h1>
+          <p className="text-muted-foreground">Gerencie seus imóveis e acompanhe o desempenho</p>
         </div>
         <div className="flex items-center gap-3">
           <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-pink-500 text-white rounded-lg hover:from-blue-600 hover:to-pink-600 transition-all duration-200">
             <Sparkles className="h-4 w-4" />
             Gerar com IA
           </button>
-          <Link href="/dashboard/properties/new" className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+          <Link href="/dashboard/properties" className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg hover:bg-accent transition-colors">
             <Plus className="h-4 w-4" />
             Novo Imóvel
           </Link>
@@ -84,7 +84,7 @@ export default function PropertiesPage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
+      <div className="bg-card rounded-xl border border-border p-6">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <div className="relative">

@@ -33,7 +33,10 @@ export default function AdminDashboardPage() {
           <p className="text-gray-600">Visão geral da plataforma e métricas principais</p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+          <button 
+            onClick={() => window.open('/dashboard/analytics', '_blank')}
+            className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          >
             <Eye className="h-4 w-4" />
             Relatório Completo
           </button>
@@ -150,21 +153,30 @@ export default function AdminDashboardPage() {
       >
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Ações Rápidas</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+          <button 
+            onClick={() => window.location.href = '/dashboard/users'}
+            className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+          >
             <Users className="h-6 w-6 text-blue-600" />
             <div>
               <p className="font-medium text-blue-900">Gerenciar Usuários</p>
               <p className="text-sm text-blue-700">Ver e editar usuários</p>
             </div>
           </button>
-          <button className="flex items-center gap-3 p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+          <button 
+            onClick={() => alert('Funcionalidade de Assinaturas será implementada em breve!')}
+            className="flex items-center gap-3 p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
+          >
             <CreditCard className="h-6 w-6 text-green-600" />
             <div>
               <p className="font-medium text-green-900">Assinaturas</p>
               <p className="text-sm text-green-700">Gerenciar planos</p>
             </div>
           </button>
-          <button className="flex items-center gap-3 p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
+          <button 
+            onClick={() => window.location.href = '/dashboard/analytics'}
+            className="flex items-center gap-3 p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
+          >
             <BarChart3 className="h-6 w-6 text-purple-600" />
             <div>
               <p className="font-medium text-purple-900">Analytics</p>

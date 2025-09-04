@@ -15,8 +15,9 @@ const posts: Record<string, { title: string; content: string }> = {
   },
 };
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = posts[params.slug];
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = posts[slug];
   if (!post) return notFound();
   return (
     <div className="min-h-dvh px-6 md:px-8 py-16 max-w-3xl mx-auto">

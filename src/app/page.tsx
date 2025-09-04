@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Sparkles, Building2, Wand2, LineChart, Eye, Users, BarChart3 } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 24 },
@@ -13,7 +12,6 @@ const fadeIn = {
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       <Hero />
       <Features />
       <DashboardPreview />
@@ -29,34 +27,7 @@ function Container({ children }: { children: React.ReactNode }) {
   return <div className="mx-auto w-full max-w-7xl px-6 md:px-8">{children}</div>;
 }
 
-function Navbar() {
-  return (
-    <div className="sticky top-0 z-50 backdrop-blur-md bg-background/60 border-b border-border">
-      <Container>
-        <div className="h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-pink-500 text-white font-bold">S</span>
-            <span className="font-semibold tracking-tight text-foreground">Seusite</span>
-          </div>
-          <div className="hidden md:flex items-center gap-6 text-sm">
-            <a className="hover:opacity-80 text-foreground/80" href="#features">Recursos</a>
-            <Link className="hover:opacity-80 text-foreground/80" href="/templates">Templates</Link>
-            <Link className="hover:opacity-80 text-foreground/80" href="/ads">Anúncios</Link>
-            <Link className="hover:opacity-80 text-foreground/80" href="/pricing">Planos</Link>
-            <Link className="hover:opacity-80 text-foreground/80" href="/blog">Blog</Link>
-            <Link className="hover:opacity-80 text-foreground/80" href="/sobre">Sobre</Link>
-            <Link className="hover:opacity-80 text-foreground/80" href="/contato">Contato</Link>
-          </div>
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <Link href="/login" className="px-3 py-2 rounded-md text-sm border border-border hover:bg-accent text-foreground">Entrar</Link>
-            <Link href="/cadastro" className="px-3 py-2 rounded-md text-sm bg-primary text-primary-foreground hover:bg-primary/90">Começar</Link>
-          </div>
-        </div>
-      </Container>
-    </div>
-  );
-}
+// Navbar removida: cabeçalho global agora vem do RootLayout
 
 function Hero() {
   return (

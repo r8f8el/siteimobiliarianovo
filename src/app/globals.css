@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Corrige pseudo-seletor e aplica variáveis corretamente */
 :root {
   /* Tema Claro (Padrão) */
   --background: #ffffff;
@@ -25,25 +26,25 @@
 }
 
 .dark {
-  /* Tema Escuro */
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --card: #1a1a1a;
-  --card-foreground: #ededed;
-  --popover: #1a1a1a;
-  --popover-foreground: #ededed;
+  /* Tema Escuro - Azul escuro */
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
   --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #1e293b;
+  --secondary: #334155;
   --secondary-foreground: #f8fafc;
-  --muted: #1e293b;
+  --muted: #334155;
   --muted-foreground: #94a3b8;
-  --accent: #1e293b;
+  --accent: #334155;
   --accent-foreground: #f8fafc;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #1e293b;
-  --input: #1e293b;
+  --border: #334155;
+  --input: #334155;
   --ring: #3b82f6;
 }
 
@@ -78,15 +79,15 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Tema Claro - Background com gradiente suave */
-.light body {
+/* Tema Claro - Background com gradiente suave (aplica por padrão quando não é dark) */
+body {
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   min-height: 100vh;
 }
 
-/* Tema Escuro - Background com gradiente escuro */
+/* Tema Escuro - Background com gradiente azul escuro */
 .dark body {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f172a 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   min-height: 100vh;
 }
 

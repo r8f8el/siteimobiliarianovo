@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowLeft, MapPin, Bed, Bath, Square, Car, Phone, Mail, Calculator, Play, ChevronLeft, ChevronRight, Wifi, Shield, TreePine, Waves, Mountain, Utensils, Dumbbell, Camera, Map, Star, Calendar, Eye, Users } from "lucide-react";
+import { ArrowLeft, MapPin, Bed, Bath, Square, Car, Phone, Mail, Calculator, Play, ChevronLeft, ChevronRight, Wifi, Shield, TreePine, Waves, Mountain, Utensils, Dumbbell, Camera, Map, Star, Calendar, Eye, Users, Heart } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -75,11 +75,11 @@ export default function PropertyPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-white/10">
+      <div className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-white hover:text-white/80">
+          <Link href="/" className="flex items-center gap-2 text-foreground hover:text-muted-foreground">
             <ArrowLeft className="h-5 w-5" />
             <span>Voltar</span>
           </Link>
@@ -94,7 +94,7 @@ export default function PropertyPage() {
             />
             <div className="flex items-center gap-2">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-pink-500 text-white font-bold text-sm">S</span>
-              <span className="font-semibold text-white">Seusite</span>
+              <span className="font-semibold text-foreground">Seusite</span>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function PropertyPage() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 relative group"
+              className="rounded-2xl overflow-hidden bg-card border border-border relative group"
             >
               <div className="aspect-[4/3] relative">
                 <Image 
@@ -122,13 +122,13 @@ export default function PropertyPage() {
                 {/* Navegação da galeria */}
                 <button 
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   <ChevronLeft className="h-5 w-5" />
                 </button>
                 <button 
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-background/80 hover:bg-background text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   <ChevronRight className="h-5 w-5" />
                 </button>
@@ -147,7 +147,7 @@ export default function PropertyPage() {
                 </div>
 
                 {/* Contador de imagens */}
-                <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm">
+                <div className="absolute bottom-4 right-4 bg-background/80 backdrop-blur-sm rounded-lg px-3 py-1 text-foreground text-sm">
                   {currentImage + 1} / {property.images.length}
                 </div>
 
@@ -171,18 +171,18 @@ export default function PropertyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6"
+              className="bg-card border border-border rounded-2xl p-6"
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="flex-1">
-                  <h1 className="text-3xl font-bold text-white mb-3">{property.title}</h1>
-                  <div className="flex items-center gap-2 text-white/70 mb-4">
+                  <h1 className="text-3xl font-bold text-foreground mb-3">{property.title}</h1>
+                  <div className="flex items-center gap-2 text-muted-foreground mb-4">
                     <MapPin className="h-4 w-4" />
                     <span className="text-sm">{property.address}</span>
                   </div>
                   
                   {/* Estatísticas */}
-                  <div className="flex items-center gap-6 text-sm text-white/60">
+                  <div className="flex items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <Eye className="h-4 w-4" />
                       <span>{property.views} visualizações</span>
@@ -198,12 +198,12 @@ export default function PropertyPage() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-4xl font-bold text-white mb-1">R$ {property.price.toLocaleString('pt-BR')}</div>
-                  <div className="text-sm text-white/60 mb-2">{property.features.status}</div>
-                  <div className="text-xs text-white/50">
+                  <div className="text-4xl font-bold text-foreground mb-1">R$ {property.price.toLocaleString('pt-BR')}</div>
+                  <div className="text-sm text-muted-foreground mb-2">{property.features.status}</div>
+                  <div className="text-xs text-muted-foreground">
                     Condomínio: R$ {property.features.condominium}/mês
                   </div>
-                  <div className="text-xs text-white/50">
+                  <div className="text-xs text-muted-foreground">
                     IPTU: R$ {property.features.iptu}/mês
                   </div>
                 </div>
@@ -211,62 +211,62 @@ export default function PropertyPage() {
 
               {/* Características Principais */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="flex items-center gap-2 text-white/80 bg-white/5 rounded-lg p-3">
+                <div className="flex items-center gap-2 text-foreground bg-muted rounded-lg p-3">
                   <Bed className="h-5 w-5 text-blue-400" />
                   <div>
                     <div className="text-sm font-medium">{property.features.bedrooms}</div>
-                    <div className="text-xs text-white/60">quartos</div>
+                    <div className="text-xs text-muted-foreground">quartos</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-white/80 bg-white/5 rounded-lg p-3">
+                <div className="flex items-center gap-2 text-foreground bg-muted rounded-lg p-3">
                   <Bath className="h-5 w-5 text-green-400" />
                   <div>
                     <div className="text-sm font-medium">{property.features.bathrooms}</div>
-                    <div className="text-xs text-white/60">banheiros</div>
+                    <div className="text-xs text-muted-foreground">banheiros</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-white/80 bg-white/5 rounded-lg p-3">
+                <div className="flex items-center gap-2 text-foreground bg-muted rounded-lg p-3">
                   <Square className="h-5 w-5 text-purple-400" />
                   <div>
                     <div className="text-sm font-medium">{property.features.area}m²</div>
-                    <div className="text-xs text-white/60">área útil</div>
+                    <div className="text-xs text-muted-foreground">área útil</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-white/80 bg-white/5 rounded-lg p-3">
+                <div className="flex items-center gap-2 text-foreground bg-muted rounded-lg p-3">
                   <Car className="h-5 w-5 text-orange-400" />
                   <div>
                     <div className="text-sm font-medium">{property.features.parking}</div>
-                    <div className="text-xs text-white/60">vagas</div>
+                    <div className="text-xs text-muted-foreground">vagas</div>
                   </div>
                 </div>
               </div>
 
               {/* Detalhes Adicionais */}
               <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="text-sm font-medium text-white mb-2">Detalhes do Imóvel</h4>
-                  <div className="space-y-1 text-sm text-white/70">
+                <div className="bg-muted rounded-lg p-4">
+                  <h4 className="text-sm font-medium text-foreground mb-2">Detalhes do Imóvel</h4>
+                  <div className="space-y-1 text-sm text-muted-foreground">
                     <div>Ano de construção: {property.features.yearBuilt}</div>
                     <div>Andar: {property.features.floor}</div>
                     <div>Tipo: {property.features.type}</div>
                   </div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-4">
-                  <h4 className="text-sm font-medium text-white mb-2">Custos Mensais</h4>
-                  <div className="space-y-1 text-sm text-white/70">
+                <div className="bg-muted rounded-lg p-4">
+                  <h4 className="text-sm font-medium text-foreground mb-2">Custos Mensais</h4>
+                  <div className="space-y-1 text-sm text-muted-foreground">
                     <div>Condomínio: R$ {property.features.condominium}</div>
                     <div>IPTU: R$ {property.features.iptu}</div>
-                    <div className="text-xs text-white/50">*Valores aproximados</div>
+                    <div className="text-xs text-muted-foreground">*Valores aproximados</div>
                   </div>
                 </div>
               </div>
 
               {/* Comodidades */}
               <div className="mb-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Comodidades</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-4">Comodidades</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {property.amenities.map((amenity, index) => (
-                    <div key={index} className="flex items-center gap-2 text-white/80 bg-white/5 rounded-lg p-3">
+                    <div key={index} className="flex items-center gap-2 text-foreground bg-muted rounded-lg p-3">
                       <div className="text-blue-400">{amenity.icon}</div>
                       <span className="text-sm">{amenity.name}</span>
                     </div>
@@ -276,8 +276,8 @@ export default function PropertyPage() {
 
               {/* Descrição */}
               <div>
-                <h3 className="text-lg font-semibold text-white mb-3">Descrição</h3>
-                <p className="text-white/80 leading-relaxed">{property.description}</p>
+                <h3 className="text-lg font-semibold text-foreground mb-3">Descrição</h3>
+                <p className="text-muted-foreground leading-relaxed">{property.description}</p>
               </div>
             </motion.div>
 
@@ -286,14 +286,14 @@ export default function PropertyPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6"
+              className="bg-card border border-border rounded-2xl p-6"
             >
-              <h3 className="text-lg font-semibold text-white mb-4">Localização</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Localização</h3>
               <div className="aspect-[16/9] bg-gradient-to-br from-blue-500/20 to-green-500/20 rounded-lg flex items-center justify-center relative overflow-hidden">
-                <div className="text-center text-white/80">
+                <div className="text-center text-foreground">
                   <Map className="h-12 w-12 mx-auto mb-2 opacity-50" />
                   <div className="text-sm">Mapa interativo</div>
-                  <div className="text-xs text-white/60 mt-1">
+                  <div className="text-xs text-muted-foreground mt-1">
                     {property.location.neighborhood}, {property.location.city} - {property.location.state}
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export default function PropertyPage() {
                     href={`https://maps.google.com/?q=${property.location.lat},${property.location.lng}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg bg-background/80 hover:bg-background text-foreground text-sm transition-colors"
                   >
                     <Map className="h-4 w-4" />
                     Ver no Google Maps
@@ -319,13 +319,13 @@ export default function PropertyPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6"
+              className="bg-card border border-border rounded-2xl p-6"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-white">Financiamento</h3>
+                <h3 className="text-lg font-semibold text-foreground">Financiamento</h3>
                 <button 
                   onClick={() => setShowCalculator(!showCalculator)}
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                  className="p-2 rounded-lg bg-muted hover:bg-accent text-foreground transition-colors"
                 >
                   <Calculator className="h-4 w-4" />
                 </button>
@@ -334,7 +334,7 @@ export default function PropertyPage() {
               {showCalculator && (
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm text-white/70 mb-2">Entrada (%)</label>
+                    <label className="block text-sm text-muted-foreground mb-2">Entrada (%)</label>
                     <input 
                       type="range" 
                       min="10" 
@@ -342,10 +342,10 @@ export default function PropertyPage() {
                       defaultValue="20"
                       className="w-full"
                     />
-                    <div className="text-sm text-white/60 mt-1">20% - R$ 170.000</div>
+                    <div className="text-sm text-muted-foreground mt-1">20% - R$ 170.000</div>
                   </div>
                   <div>
-                    <label className="block text-sm text-white/70 mb-2">Prazo (anos)</label>
+                    <label className="block text-sm text-muted-foreground mb-2">Prazo (anos)</label>
                     <input 
                       type="range" 
                       min="10" 
@@ -353,12 +353,12 @@ export default function PropertyPage() {
                       defaultValue="25"
                       className="w-full"
                     />
-                    <div className="text-sm text-white/60 mt-1">25 anos</div>
+                    <div className="text-sm text-muted-foreground mt-1">25 anos</div>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3">
-                    <div className="text-sm text-white/70">Parcela estimada</div>
-                    <div className="text-2xl font-bold text-white">R$ 3.847/mês</div>
-                    <div className="text-xs text-white/50 mt-1">*Taxa de 8,5% a.a.</div>
+                  <div className="bg-muted rounded-lg p-3">
+                    <div className="text-sm text-muted-foreground">Parcela estimada</div>
+                    <div className="text-2xl font-bold text-foreground">R$ 3.847/mês</div>
+                    <div className="text-xs text-muted-foreground mt-1">*Taxa de 8,5% a.a.</div>
                   </div>
                 </div>
               )}
@@ -369,9 +369,9 @@ export default function PropertyPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 sticky top-24"
+              className="bg-card border border-border rounded-2xl p-6 sticky top-24"
             >
-              <h3 className="text-lg font-semibold text-white mb-4">Entre em contato</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Entre em contato</h3>
               
               {/* Agente */}
               <div className="flex items-center gap-3 mb-6">
@@ -379,13 +379,13 @@ export default function PropertyPage() {
                   {property.agent.name.split(' ').map(n => n[0]).join('')}
                 </div>
                 <div className="flex-1">
-                  <div className="font-medium text-white">{property.agent.name}</div>
-                  <div className="text-sm text-white/60">Corretor</div>
+                  <div className="font-medium text-foreground">{property.agent.name}</div>
+                  <div className="text-sm text-muted-foreground">Corretor</div>
                   <div className="flex items-center gap-1 mt-1">
                     <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                    <span className="text-xs text-white/70">{property.agent.rating}</span>
-                    <span className="text-xs text-white/50">•</span>
-                    <span className="text-xs text-white/70">{property.agent.experience}</span>
+                    <span className="text-xs text-muted-foreground">{property.agent.rating}</span>
+                    <span className="text-xs text-muted-foreground">•</span>
+                    <span className="text-xs text-muted-foreground">{property.agent.experience}</span>
                   </div>
                 </div>
               </div>
@@ -395,43 +395,43 @@ export default function PropertyPage() {
                 <input 
                   type="text" 
                   placeholder="Seu nome" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
                   type="email" 
                   placeholder="Seu e-mail" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <input 
                   type="tel" 
                   placeholder="Seu telefone" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <textarea 
                   placeholder="Sua mensagem" 
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                 />
                 <button 
                   type="submit"
-                  className="w-full px-4 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-pink-500 text-white font-medium hover:from-blue-600 hover:to-pink-600 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all duration-200"
                 >
                   Enviar Mensagem
                 </button>
               </form>
 
               {/* Contatos Diretos */}
-              <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
+              <div className="mt-6 pt-6 border-t border-border space-y-3">
                 <a 
                   href={`tel:${property.agent.phone}`}
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-accent"
                 >
                   <Phone className="h-4 w-4" />
                   <span className="text-sm">{property.agent.phone}</span>
                 </a>
                 <a 
                   href={`mailto:${property.agent.email}`}
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors p-2 rounded-lg hover:bg-accent"
                 >
                   <Mail className="h-4 w-4" />
                   <span className="text-sm">{property.agent.email}</span>
